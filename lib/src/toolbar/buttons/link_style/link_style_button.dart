@@ -77,6 +77,7 @@ class QuillToolbarLinkStyleButtonState
         QuillToolbarLinkStyleButtonExtraOptions(
           context: context,
           controller: controller,
+          isSelected: isToggled,
           onPressed: () {
             _openLinkDialog(context);
             afterButtonPressed?.call();

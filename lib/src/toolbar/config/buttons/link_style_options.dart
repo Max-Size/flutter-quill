@@ -15,7 +15,10 @@ class QuillToolbarLinkStyleButtonExtraOptions
     required super.controller,
     required super.context,
     required super.onPressed,
+    required this.isSelected,
   });
+
+  final bool isSelected;
 }
 
 class QuillToolbarLinkStyleButtonOptions extends QuillToolbarBaseButtonOptions<
@@ -51,7 +54,7 @@ class QuillToolbarLinkStyleButtonOptions extends QuillToolbarBaseButtonOptions<
   /// This callback is preferred over [linkRegExp] when both are set.
   final LinkValidationCallback? validateLink;
 
-  /// Function that should open the route/dialog for the url 
+  /// Function that should open the route/dialog for the url
   /// menu and return [QuillTextLink] to apply changes
   final Future<QuillTextLink?> Function(
     BuildContext context,
