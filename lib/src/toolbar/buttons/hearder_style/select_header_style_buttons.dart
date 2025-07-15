@@ -112,6 +112,7 @@ class QuillToolbarSelectHeaderStyleButtonsState
             context: context,
             onPressed: () => _sharedOnPressed(attribute),
             isSelected: isSelected,
+            attribute: attribute,
           ),
         );
       }
