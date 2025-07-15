@@ -49,10 +49,10 @@ class QuillToolbarSelectHeaderStyleButtonsState
   Style get _selectionStyle => controller.getSelectionStyle();
 
   final _valueToText = <Attribute, String>{
-    Attribute.header: 'N',
     Attribute.h1: 'H1',
     Attribute.h2: 'H2',
     Attribute.h3: 'H3',
+    Attribute.header: 'N',
   };
 
   @override
@@ -78,10 +78,10 @@ class QuillToolbarSelectHeaderStyleButtonsState
   List<Attribute> get _attributes {
     return options.attributes ??
         const [
-          Attribute.header,
           Attribute.h1,
           Attribute.h2,
           Attribute.h3,
+          Attribute.header,
         ];
   }
 
@@ -141,10 +141,12 @@ class QuillToolbarSelectHeaderStyleButtonsState
 
     return axis == Axis.horizontal
         ? Row(
+            spacing: options.spacing,
             mainAxisSize: MainAxisSize.min,
             children: children,
           )
         : Column(
+            spacing: options.spacing,
             mainAxisSize: MainAxisSize.min,
             children: children,
           );

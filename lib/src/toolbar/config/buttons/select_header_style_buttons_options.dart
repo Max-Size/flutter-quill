@@ -29,6 +29,7 @@ class QuillToolbarSelectHeaderStyleButtonsOptions
     super.tooltip,
     this.axis,
     this.attributes,
+    this.spacing = 0,
     super.iconSize,
     super.iconButtonFactor,
   });
@@ -47,4 +48,6 @@ class QuillToolbarSelectHeaderStyleButtonsOptions
 
   /// By default we will the toolbar axis from [QuillSimpleToolbarConfig]
   final Axis? axis;
+
+  final double spacing;
 }
