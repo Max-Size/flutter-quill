@@ -100,22 +100,30 @@ class QuillToolbarLinkStyleButtonState
   Future<void> _openLinkDialog(BuildContext context) async {
     final initialTextLink = QuillTextLink.prepare(widget.controller);
 
-    final textLink = await showDialog<QuillTextLink>(
-      context: context,
-      builder: (_) {
-        return LinkDialog(
-          validateLink: options.validateLink,
-          // ignore: deprecated_member_use_from_same_package
-          legacyLinkRegExp: options.linkRegExp,
-          dialogTheme: options.dialogTheme,
-          text: initialTextLink.text,
-          link: initialTextLink.link,
-          action: options.linkDialogAction,
-        );
-      },
-    );
+    final textLink =
+        await (options.urlMenuOpener?.call(context, initialTextLink) ??
+            _openDefaultDialog(context, initialTextLink));
     if (textLink != null) {
       textLink.submit(widget.controller);
     }
   }
+
+  Future<QuillTextLink?> _openDefaultDialog(
+    BuildContext context,
+    QuillTextLink initialTextLink,
+  ) =>
+      showDialog<QuillTextLink>(
+        context: context,
+        builder: (_) {
+          return LinkDialog(
+            validateLink: options.validateLink,
+            // ignore: deprecated_member_use_from_same_package
+            legacyLinkRegExp: options.linkRegExp,
+            dialogTheme: options.dialogTheme,
+            text: initialTextLink.text,
+            link: initialTextLink.link,
+            action: options.linkDialogAction,
+          );
+        },
+      );
 }
