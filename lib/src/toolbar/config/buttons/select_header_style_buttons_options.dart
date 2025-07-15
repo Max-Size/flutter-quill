@@ -9,7 +9,10 @@ class QuillToolbarSelectHeaderStyleButtonsExtraOptions
     required super.controller,
     required super.context,
     required super.onPressed,
+    required this.isSelected,
   });
+  
+  final bool isSelected;
 }
 
 class QuillToolbarSelectHeaderStyleButtonsOptions

@@ -102,6 +102,8 @@ class QuillToolbarSelectHeaderStyleButtonsState
     final childBuilder = this.childBuilder;
 
     final children = _attributes.map((attribute) {
+      final isSelected = _selectedAttribute == attribute;
+
       if (childBuilder != null) {
         return childBuilder(
           options,
@@ -109,11 +111,11 @@ class QuillToolbarSelectHeaderStyleButtonsState
             controller: controller,
             context: context,
             onPressed: () => _sharedOnPressed(attribute),
+            isSelected: isSelected,
           ),
         );
       }
 
-      final isSelected = _selectedAttribute == attribute;
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: !kIsWeb ? 1.0 : 5.0),
         child: QuillToolbarIconButton(
