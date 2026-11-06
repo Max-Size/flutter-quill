@@ -61,6 +61,7 @@ class QuillRawEditorConfig {
     this.customRecognizerBuilder,
     this.floatingCursorDisabled = false,
     this.customLinkPrefixes = const <String>[],
+    this.transformLink,
     this.dialogTheme,
     this.contentInsertionConfiguration,
     this.textInputAction = TextInputAction.newline,
@@ -72,6 +73,7 @@ class QuillRawEditorConfig {
     this.onPerformAction,
     @experimental this.customLeadingBuilder,
     this.quillMagnifierBuilder,
+    this.showCodeBlockLineNumbers = true,
   });
 
   /// Controls whether this editor has keyboard focus.
@@ -81,6 +83,9 @@ class QuillRawEditorConfig {
   final double scrollBottomInset;
   @experimental
   final LeadingBlockNodeBuilder? customLeadingBuilder;
+
+  /// See [QuillEditorConfig.showCodeBlockLineNumbers].
+  final bool showCodeBlockLineNumbers;
 
   /// Contains all the events that will be handled when
   /// the exact characters satifies the condition. This mean
@@ -159,7 +164,7 @@ class QuillRawEditorConfig {
   final KeyEventResult? Function(KeyEvent event, Node? node)? onKeyPressed;
 
   /// Additional space around the editor contents.
-  final EdgeInsets padding;
+  final EdgeInsetsGeometry padding;
 
   /// Enables always indenting when the TAB key is pressed.
   ///
@@ -363,6 +368,13 @@ class QuillRawEditorConfig {
   final CustomRecognizerBuilder? customRecognizerBuilder;
   final bool floatingCursorDisabled;
   final List<String> customLinkPrefixes;
+
+  /// Callback to transform a link before it is launched on tap in the editor.
+  ///
+  /// Receives the trimmed link string and returns the final URL to launch.
+  /// When not set (`null`), the link is validated against known prefixes and
+  /// `https://` is prepended if no recognized prefix is found.
+  final String Function(String link)? transformLink;
 
   /// Used to build the [InlineSpan]s containing text content.
   final TextSpanBuilder textSpanBuilder;

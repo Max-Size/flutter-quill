@@ -21,9 +21,12 @@ class QuillToolbarLinkStyleButtonExtraOptions
   final bool isSelected;
 }
 
-class QuillToolbarLinkStyleButtonOptions extends QuillToolbarBaseButtonOptions<
-    QuillToolbarLinkStyleButtonOptions,
-    QuillToolbarLinkStyleButtonExtraOptions> {
+class QuillToolbarLinkStyleButtonOptions
+    extends
+        QuillToolbarBaseButtonOptions<
+          QuillToolbarLinkStyleButtonOptions,
+          QuillToolbarLinkStyleButtonExtraOptions
+        > {
   const QuillToolbarLinkStyleButtonOptions({
     this.dialogTheme,
     this.linkRegExp,
